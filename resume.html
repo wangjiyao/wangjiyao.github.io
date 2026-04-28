@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 🔧 修改这里：替换为你的真实姓名 -->
+  <title>王某某 - 个人简历</title>
+  <!-- Google Fonts: Noto Sans SC（中文）+ Inter（英文） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ========================================
+       全局重置与基础样式
+    ======================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ========================================
+       主容器
+    ======================================== */
+    .resume-card {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    /* ========================================
+       头部 Hero 区域
+    ======================================== */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      padding: 56px 48px 48px;
+      text-align: center;
+      color: #fff;
+    }
+
+    /* 圆形头像区域 */
+    .avatar-wrap {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #4f8ef7 0%, #a78bfa 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid rgba(255, 255, 255, 0.25);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(79, 142, 247, 0.4);
+    }
+
+    /* 🔧 修改这里：替换为你的头像图片路径（如 src="avatar.jpg"），或删除 SVG 保留 <img> 标签 */
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-placeholder svg {
+      width: 64px;
+      height: 64px;
+      fill: rgba(255, 255, 255, 0.85);
+    }
+
+    /* 姓名 */
+    .hero-name {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    /* 职位 / Tagline */
+    .hero-tagline {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+
+    /* 联系方式行 */
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px 28px;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.80);
+    }
+
+    .hero-contacts a {
+      color: rgba(255, 255, 255, 0.80);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hero-contacts a:hover {
+      color: #fff;
+    }
+
+    .hero-contacts .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-contacts .contact-item i {
+      color: #4f8ef7;
+      font-size: 0.95rem;
+    }
+
+    /* ========================================
+       主体内容区
+    ======================================== */
+    .resume-body {
+      padding: 40px 48px 48px;
+    }
+
+    /* ========================================
+       通用 Section 样式
+    ======================================== */
+    section {
+      margin-bottom: 40px;
+    }
+
+    section:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 左侧蓝色竖线 + Section 标题 */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      padding-left: 14px;
+      border-left: 4px solid #4f8ef7;
+      margin-bottom: 22px;
+    }
+
+    .section-title i {
+      color: #4f8ef7;
+      font-size: 1rem;
+    }
+
+    /* ========================================
+       关于我
+    ======================================== */
+    #about p {
+      color: #555;
+      line-height: 1.9;
+    }
+
+    /* ========================================
+       时间轴（教育 & 工作经历共用）
+    ======================================== */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    /* 左侧竖线 */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: #e0e7f4;
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 蓝色实心圆点 */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #4f8ef7;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px #4f8ef7;
+    }
+
+    /* 时间轴条目头部：标题+时间 flex 布局 */
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .timeline-main {
+      flex: 1;
+    }
+
+    .timeline-title {
+      font-weight: 700;
+      color: #1a1a2e;
+      font-size: 0.975rem;
+    }
+
+    .timeline-sub {
+      color: #888;
+      font-size: 0.875rem;
+      margin-top: 2px;
+    }
+
+    .timeline-period {
+      font-size: 0.8rem;
+      color: #aaa;
+      white-space: nowrap;
+      padding-top: 2px;
+      background: #f0f4ff;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-weight: 500;
+      color: #4f8ef7;
+    }
+
+    .timeline-desc {
+      margin-top: 8px;
+      color: #666;
+      font-size: 0.875rem;
+      line-height: 1.75;
+    }
+
+    /* 工作经历 bullet list */
+    .timeline-bullets {
+      margin-top: 8px;
+      padding-left: 16px;
+      list-style: disc;
+      color: #666;
+      font-size: 0.875rem;
+      line-height: 1.8;
+    }
+
+    .timeline-bullets li {
+      margin-bottom: 4px;
+    }
+
+    /* ========================================
+       技能区
+    ======================================== */
+    .skills-group {
+      margin-bottom: 18px;
+    }
+
+    .skills-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills-group-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* 技能 Tag（圆角浅蓝色 badge） */
+    .skill-tag {
+      background: #eef4ff;
+      color: #2563eb;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border: 1px solid #c7d9fa;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .skill-tag:hover {
+      background: #dbeafe;
+      transform: translateY(-1px);
+    }
+
+    /* ========================================
+       项目卡片（Grid 布局）
+    ======================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      border: 1px solid #e8edf5;
+      border-radius: 12px;
+      padding: 22px 24px;
+      transition: box-shadow 0.2s, transform 0.2s;
+      background: #fafbff;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 6px 24px rgba(79, 142, 247, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .project-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      color: #666;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .project-tag {
+      background: #f0f4ff;
+      color: #4f8ef7;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* GitHub 链接按钮 */
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.825rem;
+      color: #4f8ef7;
+      text-decoration: none;
+      border: 1px solid #c7d9fa;
+      border-radius: 8px;
+      padding: 5px 14px;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .project-link:hover {
+      background: #4f8ef7;
+      color: #fff;
+      border-color: #4f8ef7;
+    }
+
+    /* ========================================
+       页脚
+    ======================================== */
+    footer {
+      text-align: center;
+      padding: 20px 48px;
+      background: #f5f5f5;
+      color: #aaa;
+      font-size: 0.82rem;
+      border-top: 1px solid #eee;
+    }
+
+    /* ========================================
+       响应式适配（手机端）
+    ======================================== */
+    @media (max-width: 640px) {
+      .resume-card {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      header {
+        padding: 40px 24px 36px;
+      }
+
+      .resume-body {
+        padding: 28px 20px 36px;
+      }
+
+      .hero-name {
+        font-size: 1.6rem;
+      }
+
+      .hero-contacts {
+        gap: 12px 20px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-header {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      footer {
+        padding: 16px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="resume-card">
+
+  <!-- ============================================================
+       头部 Hero 区域
+  ============================================================ -->
+  <header>
+    <!-- 🔧 修改这里：替换为你的头像图片路径，例如 <img src="assets/img/avatar.jpg" alt="头像"> -->
+    <div class="avatar-wrap">
+      <div class="avatar-placeholder">
+        <!-- 人形 SVG 占位图标 -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 🔧 修改这里：替换为你的真实姓名 -->
+    <h1 class="hero-name">王某某</h1>
+
+    <!-- 🔧 修改这里：替换为你的职位或个人简介 -->
+    <p class="hero-tagline">全栈工程师 · 开源爱好者</p>
+
+    <!-- 联系方式 -->
+    <div class="hero-contacts">
+      <!-- 🔧 修改这里：替换为你的真实联系方式 -->
+      <span class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:example@email.com">example@email.com</a>
+      </span>
+      <span class="contact-item">
+        <i class="fa-brands fa-github"></i>
+        <a href="https://github.com/wangjiyao" target="_blank" rel="noopener">github.com/wangjiyao</a>
+      </span>
+      <span class="contact-item">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <span>+86 138-xxxx-xxxx</span>
+      </span>
+      <span class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>中国 · 北京</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- 主体内容 -->
+  <div class="resume-body">
+
+    <!-- ============================================================
+         关于我
+    ============================================================ -->
+    <section id="about">
+      <h2 class="section-title">
+        <i class="fa-solid fa-user"></i>关于我
+      </h2>
+      <!-- 🔧 修改这里：替换为你的自我介绍 -->
+      <p>
+        你好，我是王某某，一名拥有 5 年经验的全栈工程师，专注于 Web 应用的设计与开发。
+        我热爱开源，乐于探索新技术，曾参与多个开源项目并积累了丰富的工程实践经验。
+        在工作中，我注重代码质量与团队协作，善于将复杂问题拆解为清晰的技术方案。
+        业余时间喜欢写技术博客、参加黑客松，以及骑行和阅读。
+      </p>
+    </section>
+
+    <!-- ============================================================
+         教育背景
+    ============================================================ -->
+    <section id="education">
+      <h2 class="section-title">
+        <i class="fa-solid fa-graduation-cap"></i>教育背景
+      </h2>
+      <div class="timeline">
+
+        <!-- 🔧 修改这里：替换为你的教育经历 -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-main">
+              <div class="timeline-title">北京大学</div>
+              <div class="timeline-sub">计算机科学与技术 · 硕士研究生</div>
+            </div>
+            <span class="timeline-period">2020.09 — 2023.06</span>
+          </div>
+          <p class="timeline-desc">
+            主攻分布式系统与云计算方向，参与导师国家级科研项目，发表 1 篇 CCF-B 类论文。研究生期间担任实验室助管，协助组织技术分享会。
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-main">
+              <div class="timeline-title">某知名高校</div>
+              <div class="timeline-sub">软件工程 · 本科</div>
+            </div>
+            <span class="timeline-period">2016.09 — 2020.06</span>
+          </div>
+          <p class="timeline-desc">
+            GPA 3.8/4.0，连续三年获校级奖学金。参加 ACM-ICPC 区域赛并获铜奖，担任计算机协会技术部部长。
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         工作经历
+    ============================================================ -->
+    <section id="experience">
+      <h2 class="section-title">
+        <i class="fa-solid fa-briefcase"></i>工作经历
+      </h2>
+      <div class="timeline">
+
+        <!-- 🔧 修改这里：替换为你的工作经历 -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-main">
+              <div class="timeline-title">某互联网大厂</div>
+              <div class="timeline-sub">高级前端工程师</div>
+            </div>
+            <span class="timeline-period">2023.07 — 至今</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>负责核心业务中台前端架构设计与研发，服务日活用户超 200 万，页面 LCP 优化至 1.2s 以内。</li>
+            <li>主导团队组件库建设，沉淀 60+ 通用组件，被 10+ 业务线复用，减少重复开发工作量约 40%。</li>
+            <li>推动前端工程化升级（Vite + TypeScript），构建速度提升 3 倍，单测覆盖率从 20% 提升至 75%。</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-main">
+              <div class="timeline-title">某创业公司</div>
+              <div class="timeline-sub">全栈工程师（实习）</div>
+            </div>
+            <span class="timeline-period">2022.07 — 2022.12</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>独立完成 SaaS 产品后台管理系统前后端开发（React + Node.js + PostgreSQL），按时交付上线。</li>
+            <li>设计并实现基于 JWT 的权限管理系统，支持细粒度的角色与资源访问控制。</li>
+            <li>参与产品需求评审与技术方案制定，推动 3 项关键功能从 0 到 1 落地。</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         技能
+    ============================================================ -->
+    <section id="skills">
+      <h2 class="section-title">
+        <i class="fa-solid fa-code"></i>技能
+      </h2>
+
+      <!-- 🔧 修改这里：添加/删除技能标签 -->
+      <div class="skills-group">
+        <div class="skills-group-label">前端</div>
+        <div class="skills-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Vue 3</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">Vite</span>
+          <span class="skill-tag">webpack</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-label">后端</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Go</span>
+          <span class="skill-tag">Spring Boot</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Redis</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-label">工具与其他</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Figma</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         项目经历
+    ============================================================ -->
+    <section id="projects">
+      <h2 class="section-title">
+        <i class="fa-solid fa-rocket"></i>项目经历
+      </h2>
+      <div class="projects-grid">
+
+        <!-- 🔧 修改这里：替换为你的真实项目 -->
+        <div class="project-card">
+          <div class="project-name">📦 开源组件库 · UIKit</div>
+          <p class="project-desc">
+            一套面向企业中后台场景的 React 组件库，包含 60+ 组件，支持主题定制与按需加载，
+            已被多个内部项目采用，npm 周下载量 2k+。
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">React</span>
+            <span class="project-tag">TypeScript</span>
+            <span class="project-tag">Storybook</span>
+            <span class="project-tag">Rollup</span>
+          </div>
+          <!-- 🔧 修改这里：替换为你的 GitHub 项目地址 -->
+          <a class="project-link" href="https://github.com/wangjiyao" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> 查看源码
+          </a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-name">🤖 AI 写作助手</div>
+          <p class="project-desc">
+            基于 OpenAI API 的智能写作辅助工具，支持润色、续写、摘要生成等功能，
+            提供 Web 端和 Chrome 插件两种形态，注册用户 500+。
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Next.js</span>
+            <span class="project-tag">OpenAI API</span>
+            <span class="project-tag">Tailwind</span>
+            <span class="project-tag">Vercel</span>
+          </div>
+          <!-- 🔧 修改这里：替换为你的 GitHub 项目地址 -->
+          <a class="project-link" href="https://github.com/wangjiyao" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> 查看源码
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /.resume-body -->
+
+  <!-- ============================================================
+       页脚
+  ============================================================ -->
+  <!-- 🔧 修改这里：替换为你的真实姓名 -->
+  <footer>
+    © 2026 王某某 · Built with ❤️
+  </footer>
+
+</div><!-- /.resume-card -->
+
+</body>
+</html>
