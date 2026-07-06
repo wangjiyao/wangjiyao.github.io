@@ -1,53 +1,15 @@
 name: 王佳瑶
 handle: wangjiyao
-role: Creator / Developer / Lifelong Learner
-headline: 把想法做成可用的网页、工具和长期可维护的作品。
-intro: >-
-  这里是 wangjiyao 的个人主页。它可以展示近况、作品、文章和联系方式；后续只需要更新
-  _data/profile.yml 就能维护首页内容。
+role: Developer & Lifelong Learner
+tagline: 把想法做成可用的网页、工具和长期可维护的作品。
 location: China
 availability: Open to ideas, collaboration and better tools.
 
 links:
   - label: GitHub
     url: https://github.com/wangjiyao
-  - label: Blog
-    url: /archives/
-  - label: Resume
-    url: /resume.html
-
-focus:
-  - Web experience
-  - Product thinking
-  - Automation
-  - Knowledge systems
-
-stats:
-  - value: 01
-    label: 个人主页
-  - value: 04
-    label: 内容模块
-  - value: ∞
-    label: 持续迭代
-
-projects:
-  - name: Personal Site
-    tag: Website
-    description: 一个更轻、更聚焦的个人主页，用数据文件管理内容，用 Jekyll 保持 GitHub Pages 部署简单。
-    url: https://github.com/wangjiyao/wangjiyao.github.io
-  - name: Writing Desk
-    tag: Notes
-    description: 用来沉淀文章、想法和项目复盘的空间。未来可以直接把博客文章接入首页精选。
-    url: /archives/
-  - name: Resume
-    tag: Profile
-    description: 保留独立简历页，方便投递、分享，也方便和首页进行不同粒度的信息表达。
-    url: /resume.html
-
-timeline:
-  - time: Now
-    title: Building in public
-    description: 持续整理自己的项目、文章和工具，让主页成为一个能生长的入口。
+  - label: Email
+    url: mailto:wangjiyao@example.com
   - time: Next
     title: Add selected work
     description: 后续可以把真实项目、截图和文章精选逐步替换进来，不需要改动页面结构。

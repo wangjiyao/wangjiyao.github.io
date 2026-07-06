@@ -1,19 +1,16 @@
 # wangjiyao.github.io
 
-个人主页，基于 Jekyll 和 GitHub Pages 构建。
+简约的个人展示页，基于 Jekyll 和 GitHub Pages 构建。
 
 ## 维护首页内容
 
 首页内容集中在 `_data/profile.yml`：
 
-- `name`、`role`、`headline`、`intro`：首页首屏文案
-- `links`：首屏按钮链接
-- `focus`：个人关注方向标签
-- `stats`：右侧数据展示
-- `projects`：作品卡片
-- `timeline`：Now / Next 模块
+- `name`、`role`、`tagline`：首屏文案
+- `location`、`availability`：状态信息
+- `links`：链接卡片（GitHub、Email 等）
 
-修改数据后不需要改 HTML 结构。首页模板在 `index.html`。
+修改数据后无需改动 HTML。模板在 `index.html`。
 
 ## 本地预览
 
@@ -23,12 +20,6 @@ bundle exec jekyll serve
 ```
 
 打开 `http://127.0.0.1:4000` 查看效果。
-
-## 构建检查
-
-```console
-bundle exec jekyll build
-```
 
 ## 部署
 
